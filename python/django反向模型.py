@@ -1,5 +1,6 @@
-import re
 import os
+import re
+
 
 class CreateModel:
 
@@ -10,11 +11,17 @@ class CreateModel:
     def parse_text(self):
         """
         解析文本
-        :return: list -> [field_i, field_name, field_type, field_max_len, field_desc]
+        :return: list -> [[field_i, field_name, field_type, field_max_len, field_desc],]
         """
         table_desc = self.table_desc
         item_list = table_desc.split('\n')
-        fields_list = [item.split('\t') for item in item_list if '\t' in item]
+        fields_list = []
+        for line in item_list:
+            # 清除空白行
+            if re.match(r'^[\s|\t]*$', line) is None:
+                item_split = re.split(r'[\t|\s]+', line)
+                # 清除空列表
+                fields_list.append(filter(lambda x: bool(x), item_split))
         return fields_list
 
     def help_text_to_field(self):
@@ -73,7 +80,11 @@ class CreateModel:
         return '\n'.join(beatify_ls)
     
     def holy_cow(self, lower_case=False):
-        string = self.add_help_text(self.beatify_model(lower_case))
+        """
+        添加help_text前可以加一些骚操作
+        """
+        beatify_model = self.beatify_model(lower_case)
+        string = self.add_help_text(beatify_model)
         return string
 
 
@@ -115,6 +126,8 @@ if __name__ == '__main__':
     models = holy.holy_cow()
     # models = holy.beatify_model()
     print(models)
-
+    
     with open('models.txt', 'a+', encoding='utf-8') as f:
         f.write(models)
+
+
