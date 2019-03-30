@@ -1,5 +1,5 @@
 /**
- * 数组去重
+ * 数组去重  ---------------------------------
  */
 
 //Set1
@@ -36,7 +36,7 @@ function distinct(a, b) {
 
 
 /**
- * 判断数组中是否存在某个值
+ * 判断数组中是否存在某个值 ---------------------------------
  */
 
 // array.includes()
@@ -71,3 +71,15 @@ let item = items.find(item => {
     return item.id === 3;
 });
 //  结果： Object { id: 3, name: "nothing" }
+
+
+/**
+ * 删除数组中一特定元素 ---------------------------------
+ */
+const removeElement = (array, element) => {
+    
+    let index = array.indexOf(element)
+      if (index > 0) {
+        return array.splice(index, 1)
+      }
+  }
