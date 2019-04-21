@@ -25,7 +25,6 @@ class Db:
         uid = db['USER']
         pwd = db['PASSWORD']
         cnxn = pyodbc.connect(f"DRIVER={driver};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}")
-        # cnxn = pyodbc.connect("DRIVER=ODBC Driver 17 for SQL Server;SERVER=yunzhusqlb2.database.chinacloudapi.cn;DATABASE=DataPool;UID=yzsqlb2;PWD=yz6699_2525")
         cnxn.add_output_converter(-155, self.handle_datetimeoffset)
         cursor = cnxn.cursor()
         return cursor
