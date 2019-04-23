@@ -1,0 +1,10 @@
+[user]
+	email = 529616@gmail.com
+	name = yekingyan
+
+[alias]
+	logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s (%C(bold blue)%cn%Creset %C(cyan)<%ce>%Creset) %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
