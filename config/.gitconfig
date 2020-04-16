@@ -1,10 +1,24 @@
 [user]
-	email = 529616@gmail.com
-	name = yekingyan
+    email = 529616@gmail.com
+    name = yekingyan
 
 [alias]
-	logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s (%C(bold blue)%cn%Creset %C(cyan)<%ce>%Creset) %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    # logs
+    logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s (%C(bold blue)%cn%Creset %C(cyan)<%ce>%Creset) %Cgreen(%cr)%Creset' --abbrev-commit --date=short
+    ll = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=short
+    ls = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat --date=short
+    contributors = shortlog --summary --numbered --email
+
+    # reset
+    resetFromOrg = !git fetch --all && git reset origin/$(git branch | grep \\* | cut -d ' ' -f2) --hard
+    pure = !git reset --hard && git clean -dffx
+
+    # pull
+    gl = !git pull origin $(git branch | grep \\* | cut -d ' ' -f2)
+
+    # push
+    gp = !git push origin $(git branch | grep \\* | cut -d ' ' -f2)
 
 [i18n]
-	commitencoding = utf-8
-	logoutputencoding = utf-8
+    commitencoding = utf-8
+    logoutputencoding = utf-8
