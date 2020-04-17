@@ -3,8 +3,11 @@
     name = yekingyan
 
 [alias]
-    # logs
-    logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s (%C(bold blue)%cn%Creset %C(cyan)<%ce>%Creset) %Cgreen(%cr)%Creset' --abbrev-commit --date=short
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    # log
+    logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s (%C(bold blue)%an%Creset %C(cyan)<%ae>%Creset) %ad %Cgreen(%cr)%Creset' --abbrev-commit --date=format:'%Y/%m/%d %H:%M:%S'
+    ll = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen<%ad>(%cr) %C(bold blue)<%an>%Creset' --date=format:'%Y/%m/%d %H:%M:%S'
+    ls = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen<%ad>(%cr) %C(bold blue)<%an>%Creset' --stat --date=format:'%Y/%m/%d %H:%M:%S'
     ll = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=short
     ls = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat --date=short
     contributors = shortlog --summary --numbered --email
