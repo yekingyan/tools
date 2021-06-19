@@ -17,7 +17,7 @@ def traversal_files(processor, path=".", is_include_dir=False):
         if os.path.isdir(dir_path):
             if is_include_dir:
                 processor(dir_path)
-            traversal_files(dir_path, processor)
+            traversal_files(processor, dir_path)
         else:
             file_name = dir_path
             processor(file_name)
